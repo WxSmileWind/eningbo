@@ -32,10 +32,10 @@
                 <el-divider><i class="el-icon-s-data"></i></el-divider>
                 <div :style="tabPosition==='reci'?'display:block':'display:none'" class="animated bounceInDown" id="left_reci">
                     <el-tabs v-model="activeName" type="card" >
-                        <el-tab-pane style="color:white;" label="月" name="month">
-                            <!--热词排行 月 m-->
+                        <el-tab-pane label="年" name="year">
+                            <!--热词排行 年 y-->
                             <el-card @mouseover.native="MoveOnLeftCards($event)" @mouseout.native="MoveOutLeftCards($event)"
-                                     @click.native="changeleftCards($event,item.EventSmallType,'m','EventSmallType')" v-for="(item,index) in hotlist" :key="index"
+                                     @click.native="changeleftCards($event,item.EventSmallType,'y','EventSmallType')" v-for="(item,index) in nhotlist" :key="index"
                                      :body-style="leftCardNon" shadow="always">
                                 <span :style="getTopThreeColor(item.id)" class="hot_icon_left">&nbsp;</span>
                                 <span class="hot_icon_id">{{item.id}}</span>
@@ -54,10 +54,10 @@
                                 <span class="hot_icon_right" style="">{{item.count}}起</span>
                             </el-card>
                         </el-tab-pane>
-                        <el-tab-pane label="年" name="year">
-                            <!--热词排行 年 y-->
+                        <el-tab-pane style="color:white;" label="月" name="month">
+                            <!--热词排行 月 m-->
                             <el-card @mouseover.native="MoveOnLeftCards($event)" @mouseout.native="MoveOutLeftCards($event)"
-                                     @click.native="changeleftCards($event,item.EventSmallType,'y','EventSmallType')" v-for="(item,index) in nhotlist" :key="index"
+                                     @click.native="changeleftCards($event,item.EventSmallType,'m','EventSmallType')" v-for="(item,index) in hotlist" :key="index"
                                      :body-style="leftCardNon" shadow="always">
                                 <span :style="getTopThreeColor(item.id)" class="hot_icon_left">&nbsp;</span>
                                 <span class="hot_icon_id">{{item.id}}</span>
@@ -65,41 +65,42 @@
                                 <span class="hot_icon_right" style="">{{item.count}}起</span>
                             </el-card>
                         </el-tab-pane>
+
                     </el-tabs>
                 </div>
                 <div :style="tabPosition==='leibie'?'display:block':'display:none'" class="animated bounceInDown" id="left_leibie">
                     <el-tabs v-model="tyactiveName" type="card" >
-                        <el-tab-pane style="color:white;" label="月" name="month">
-                            <!--类别排行 月-->
+                        <el-tab-pane label="年" name="year">
+                            <!--类别排行 年-->
                             <el-card @mouseover.native="MoveOnLeftCards($event)" @mouseout.native="MoveOutLeftCards($event)"
-                                     @click.native="changeleftCards($event,item.EventType,'m','EventType')" v-for="(item,index) in leibielist" :key="index"
+                                     @click.native="changeleftCards($event,item.EventType,'y','EventType')" v-for="(item,index) in nleibielist" :key="index"
                                      :body-style="leftrightCardNon" shadow="always">
-                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left">&nbsp;</span>
+                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left"  style="margin-left: 2px">&nbsp;</span>
                                 <span class="hot_icon_id">{{item.id}}</span>
-                                <span class="hot_icon_content">{{item.name}}</span>
-                                <span class="hot_icon_right" style="width:80px">{{item.count}}件</span>
+                                <span class="hot_icon_content" style="width: 140px">{{item.name}}</span>
+                                <span class="hot_icon_right" style="width:70px">{{item.count}}件</span>
                             </el-card>
                         </el-tab-pane>
                         <el-tab-pane label="季" name="season">
                             <!--类别排行 季-->
                             <el-card @mouseover.native="MoveOnLeftCards($event)" @mouseout.native="MoveOutLeftCards($event)"
-                                     @click.native="changeleftCards($event,item.EventType,'m','EventType')" v-for="(item,index) in jleibielist" :key="index"
+                                     @click.native="changeleftCards($event,item.EventType,'q','EventType')" v-for="(item,index) in jleibielist" :key="index"
                                      :body-style="leftrightCardNon" shadow="always">
-                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left">&nbsp;</span>
+                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left" style="margin-left: 2px">&nbsp;</span>
                                 <span class="hot_icon_id">{{item.id}}</span>
-                                <span class="hot_icon_content">{{item.name}}</span>
-                                <span class="hot_icon_right" style="width:80px">{{item.count}}件</span>
+                                <span class="hot_icon_content" style="width: 140px">{{item.name}}</span>
+                                <span class="hot_icon_right" style="width:70px">{{item.count}}件</span>
                             </el-card>
                         </el-tab-pane>
-                        <el-tab-pane label="年" name="year">
-                            <!--类别排行 年-->
+                        <el-tab-pane style="color:white;" label="月" name="month">
+                            <!--类别排行 月-->
                             <el-card @mouseover.native="MoveOnLeftCards($event)" @mouseout.native="MoveOutLeftCards($event)"
-                                     @click.native="changeleftCards($event,item.EventType,'m','EventType')" v-for="(item,index) in nleibielist" :key="index"
+                                     @click.native="changeleftCards($event,item.EventType,'m','EventType')" v-for="(item,index) in leibielist" :key="index"
                                      :body-style="leftrightCardNon" shadow="always">
-                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left">&nbsp;</span>
+                                <span :style="getTopThreeColor(item.id)" class="hot_icon_left"  style="margin-left: 2px">&nbsp;</span>
                                 <span class="hot_icon_id">{{item.id}}</span>
-                                <span class="hot_icon_content">{{item.name}}</span>
-                                <span class="hot_icon_right" style="width:80px">{{item.count}}件</span>
+                                <span class="hot_icon_content" style="width: 140px">{{item.name}}</span>
+                                <span class="hot_icon_right" style="width:70px">{{item.count}}件</span>
                             </el-card>
                         </el-tab-pane>
                     </el-tabs>
@@ -114,8 +115,10 @@
                                 <!--图片卡片轮播-->
                                 <!--<el-badge  class="card_left_top animated bounce duration-2s faster" v-for="(o, index) in 8" :key="o" value=" 城市管理 | 2图 " >-->
                                     <!--事件列表卡片-->
-                                    <el-card  v-for="(o, index) in itemlist" :key="index" @mouseover.native="MoveOnCards($event)"
-                                             @mouseout.native="MoveOutCards($event)"
+                                    <el-card  v-for="(o, index) in itemlist" :key="index"
+                                              @mouseover.native="MoveOnCards($event)"
+                                              @mouseout.native="MoveOutCards($event)"
+                                              @click.native="showinfo(o.id,$event)"
                                              :body-style="rightCardNon">
                                         <div class="card_tip">
                                             <img src="../assets/imgs/timeline.png"  style="width: 20px;display: block;float:left; margin-top: 5px;margin-left: 5px;"/>
@@ -153,7 +156,7 @@
                                                     </el-tag>
                                                 </el-badge>-->
                                                 <el-badge style="float:left;" :value="o.EventThreeTypeNameCount" class="item">
-                                                  <el-button @click="showthreeinfo(o.EventThreeType,o.datestr,o.EventThreeTypeName)"  class="tags" size="small">{{o.EventThreeTypeName}}</el-button>
+                                                  <el-button @click="showthreeinfo(o.EventThreeType,o.datestr,o.EventThreeTypeName,$event)"  class="tags" size="small">{{o.EventThreeTypeName}}</el-button>
                                                 </el-badge>
                                                 <div v-show="o.head" style="float:left;height:30px; margin-left: 5px;">
                                                      <img src="../assets/imgs/head.png" style="height:30px;"/>
@@ -161,7 +164,7 @@
                                                 <div v-show="o.tj" style="float:left;height:30px; margin-left: 5px;">
                                                     <img src="../assets/imgs/tj.png" style="height:30px;"/>
                                                 </div>
-                                                <el-button @click="showinfo(o.id)" style="float:right" class="showinfo" icon="el-icon-s-grid" size="small">
+                                                <el-button @click="showinfo(o.id,$event)" style="float:right" class="showinfo" icon="el-icon-s-grid" size="small">
                                                     事件详情
                                                 </el-button>
                                             </div>
@@ -174,8 +177,10 @@
                             <!-- 事件卡片内容区域 -->
                             <div v-if="item.itempageshow" class="swiper-slide-content">
                                 <!--事件列表卡片-->
-                                <el-card   v-for="(o, index) in item.itemlist" :key="index" @mouseover.native="MoveOnCards($event)"
-                                          @mouseout.native="MoveOutCards($event)"
+                                <el-card   v-for="(o, index) in item.itemlist" :key="index"
+                                           @mouseover.native="MoveOnCards($event)"
+                                           @mouseout.native="MoveOutCards($event)"
+                                           @click.native="showinfo(o.id,$event)"
                                           :body-style="rightCardNon">
                                     <div class="card_tip">
                                         <img src="../assets/imgs/timeline.png"  style="width: 20px;display: block;float:left; margin-top: 5px;margin-left: 5px;"/>
@@ -213,7 +218,7 @@
                                                 </el-tag>
                                             </el-badge>-->
                                             <el-badge style="float:left;" :value="o.EventThreeTypeNameCount" class="item">
-                                                <el-button @click="showthreeinfo(o.EventThreeType,o.datestr,o.EventThreeTypeName)"  class="tags" size="small">{{o.EventThreeTypeName}}</el-button>
+                                                <el-button @click="showthreeinfo(o.EventThreeType,o.datestr,o.EventThreeTypeName,$event)"  class="tags" size="small">{{o.EventThreeTypeName}}</el-button>
                                             </el-badge>
                                             <div v-show="o.head" style="float:left;height:30px; margin-left: 5px;">
                                                 <img src="../assets/imgs/head.png" style="height:30px;"/>
@@ -221,7 +226,7 @@
                                             <div v-show="o.tj" style="float:left;height:30px; margin-left: 5px;">
                                                 <img src="../assets/imgs/tj.png" style="height:30px;"/>
                                             </div>
-                                            <el-button @click="showinfo(o.id)" style="float:right" class="showinfo" icon="el-icon-s-grid" size="small">
+                                            <el-button @click="showinfo(o.id,$event)" style="float:right" class="showinfo" icon="el-icon-s-grid" size="small">
                                                 事件详情
                                             </el-button>
                                         </div>
@@ -239,8 +244,16 @@
                 <!-- 事件详情弹出框 -->
                 <el-dialog  element-loading-text="拼命加载中"
                             element-loading-spinner="el-icon-loading"
-                            element-loading-background="rgba(0, 0, 0, 0.8)" v-loading.fullscreen.lock="fullscreenLoading" @close="closeDialog" top="50px" title="事件详情" :visible.sync="showevent" :modal="true" :modal-append-to-body='false' width="1200px" >
-                    <div style="height:900px;  ">
+                            element-loading-background="rgba(0, 0, 0, 0.8)"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                            @close="closeDialog"
+                            top="50px"
+                            title="事件详情"
+                            :visible.sync="showevent"
+                            :modal="true"
+                            :modal-append-to-body='false'
+                            width="1200px" >
+                    <div style="height:900px;" >
                         <!--<el-divider class="whitedivider"><i class="el-icon-mobile-phone"></i>事件详情</el-divider>-->
                         <div class="dialog_right">
                             <!--                                <el-divider content-position="left">事件类型&上报时间</el-divider>-->
@@ -283,16 +296,17 @@
                                 </PaoMaDeng>
                             </div>
                         </div>
-                        <div style="height:400px;width:100%;float:left;margin-top: 20px; ">
-                            <el-carousel :interval="4000" type="card" height="400px">
-                                <el-carousel-item v-for="(item,index) in iteminfo.imgitems" :key="index">
+                        <div style="height:400px;width:100%;float:left;margin-top: 20px; " >
+                            <el-carousel :interval="4000" type="card" height="400px" >
+                                <el-carousel-item v-for="(item,index) in iteminfo.imgitems" :key="index" >
                                     <!-- <h3 class="medium">{{ item }}</h3>-->
-                                    <el-image
-                                            fit="scale-down"
-                                            :title="item.title"
-                                            style="width: 480px; height: 400px;"
-                                            :src="item.src"
-                                    ></el-image>
+                                        <el-image
+                                                @click="showbigimg(index)"
+                                                fit="scale-down"
+                                                :title="item.title"
+                                                style="width: 480px; height: 400px;"
+                                                :src="item.src"
+                                        ></el-image>
                                     <div style="position: absolute;height:30px;width:100px;background-color: black;top:0px;line-height: 30px;color:white;">
                                         {{item.title}}
                                     </div>
@@ -304,7 +318,14 @@
                 <!-- 三类统计分析弹出框 -->
                 <el-dialog  element-loading-text="拼命加载中"
                             element-loading-spinner="el-icon-loading"
-                            element-loading-background="rgba(0, 0, 0, 0.8)" v-loading.fullscreen.lock="fullscreenLoading" top="50px" :title="tjdialogname" :visible.sync="showtj" :modal="true" :modal-append-to-body='false' width="1200px" >
+                            element-loading-background="rgba(0, 0, 0, 0.8)"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                            top="50px"
+                            :title="tjdialogname"
+                            :visible.sync="showtj"
+                            :modal="true"
+                            :modal-append-to-body='false'
+                            width="1200px" >
                     <div style="height:850px;width:100%;z-index:9999; ">
                         <div style="height: 400px;width:1180px;">
                             <div id="tbhb_tb">
@@ -316,26 +337,24 @@
                         <!--新的相册切换-->
                         <el-carousel :interval="5000" arrow="always" height="360px" indicator-position="outside">
                             <el-carousel-item  v-for="(item,index) in eventimgitemsfor" :key="index" >
-                                <div v-for="(items,index) in item.itemlist" style="width:30%;height:360px;float:left;position: relative; margin-left: 2%; border: 2px solid #dfdfdf; border-radius: 10px;">
+                                <div @click="showinfo(items.id,$event)" v-for="(items,index) in item.itemlist" style="width:30%;height:360px;float:left;position: relative; margin-left: 2%; border: 2px solid #dfdfdf; border-radius: 10px;cursor:pointer;">
                                     <el-image
-
-                                            :title="items.title"
-                                            style="width: 100%; height: 100%; border-radius: 10px; display: block;"
-                                            :src="items.src"
+                                                :title="items.title"
+                                                style="width: 100%; height: 100%; border-radius: 10px; display: block;"
+                                                :src="items.src"
                                     ></el-image>
-                                    <div @click="showinfo(items.id)" style="cursor:pointer; position: absolute;height:30px;width:100%;background-color: black;bottom:0px;line-height: 30px;color:white; opacity: 0.8;border-radius: 10px;">
+                                    <div @click="showinfo(items.id,$event)" style="cursor:pointer; position: absolute;height:30px;width:100%;background-color: black;bottom:0px;line-height: 30px;color:white; opacity: 0.8;border-radius: 10px;">
                                         {{items.title}}
                                     </div>
                                     <div style="position:absolute;height:30px;width:160px;top:0px;left:0px;background-color: black;opacity: 0.8; line-height:30px; color:white;border-radius: 10px;">
                                         {{items.date}}
                                     </div>
-                                    <div style="position:absolute;height:30px;width:160px;top:0px;right:0px;background-color: black;opacity: 0.8; line-height:30px; color:white;border-radius: 10px;">
+                                    <div style="position:absolute;height:30px;width:180px;top:0px;right:0px;background-color: black;opacity: 0.8; line-height:30px; color:white;border-radius: 10px;">
                                         {{items.type}}-[{{items.EventThreeTypeName}}]
                                     </div>
                                 </div>
                             </el-carousel-item>
                         </el-carousel>
-
                         <!--老的相册切换-->
                         <!-- <el-carousel :interval="4000" type="card" height="360px">
                             <el-carousel-item v-for="(item,index) in eventimgitems" :key="index">
@@ -359,6 +378,10 @@
                         </el-carousel>-->
                     </div>
                 </el-dialog>
+                <!--viewer图片查看器-->
+                <viewer v-show="false" class="images" ref="viewer" :images="bigimgs">
+                    <img :alt="item.title" v-for="(item,index) in iteminfo.showbigitem" :src="item.src" :key="index" class="image" />
+                </viewer>
             </div>
         </div>
     </div>
@@ -370,49 +393,52 @@
     import {Api} from '@/api/api';
     import moment from "moment";
     import Swiper from 'swiper';
+    //舆情滚动跑马灯
     import PaoMaDeng from "@/components/paomadeng.vue";
+    //viewer事件查看器
+    import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
     export default {
         components: {
-            PaoMaDeng //舆情滚动子组件
+            PaoMaDeng,//舆情滚动子组件
+            ElImageViewer
         },
         name: "eventdx",
         data() {
             return {
-                flag:0,              //暂无作用
-                arr: [],             //舆情滚动条
-                nowdate:'',          //右上角当前时间
-                showleftmenu:false,  //左上角导航
-                showtj:false,        //三类统计分析弹框
-                showevent:false,     //事件详细内容弹框
-                activeName:'month',  //热词排行，切换选项卡 默认 月
-                tyactiveName:'month',//类型排行，切换选项卡 默认 月
-                tabPosition: 'reci', //左侧顶部切换选项卡
-                leftCardNon: { background:'#2f4553',padding: '20px',float:'left',cursor:'pointer',color:'white' },
-                rightCardNon:{ padding: '19px',width:'300px',float:'left',cursor:'pointer',background:'inherit',border:'solid 1px #94d4f8'},
-                leftrightCardNon: { width:'280px',background:'#2f4553',padding: '5px',float:'left',cursor:'pointer',color:'white' },
-                firsttype:'',    //初次加载获取到的热词排行二类top1的id
-                hotlist:[],      //月 热词排行
-                jhotlist:[],     //季 热词排行
-                nhotlist:[],     //年 热词排行
-                leibielist:[],   //月 类别排行
-                jleibielist:[],  //季 类别排行
-                nleibielist:[],  //年 类别排行
-                //value: 3,
+                flag:0,                    //暂无作用
+                arr: [],                   //舆情滚动条
+                nowdate:'',                //右上角当前时间
+                showleftmenu:false,        //左上角导航
+                showtj:false,              //三类统计分析弹框
+                showevent:false,           //事件详细内容弹框
+                activeName:'year',         //热词排行，切换选项卡 默认 月
+                tyactiveName:'year',       //类型排行，切换选项卡 默认 月
+                tabPosition: 'reci',       //左侧顶部切换选项卡
+                leftCardNon: { background:'#2f4553',padding: '16px',float:'left',cursor:'pointer',color:'white' },
+                rightCardNon:{ padding: '19px',width:'300px',float:'left',cursor:'pointer',background:'inherit',border:'solid 1px #136191'},
+                leftrightCardNon: { width:'260px',background:'#2f4553',padding: '3px',float:'left',cursor:'pointer',color:'white' },
+                firsttype:'',              //初次加载获取到的热词排行二类top1的id
+                hotlist:[],                //月 热词排行
+                jhotlist:[],               //季 热词排行
+                nhotlist:[],               //年 热词排行
+                leibielist:[],             //月 类别排行
+                jleibielist:[],            //季 类别排行
+                nleibielist:[],            //年 类别排行
                 currentDate: new Date().toLocaleDateString(),
-                isCollapse:true,
-                itemlist:[],   //右侧事件列表
-                itempplist:[], //用于分页块
-                itempage:false,//用于分页块是否显示
-                itemdiv:[],  //右侧除第一页外分页块div数组
+                itemlist:[],               //右侧事件列表
+                itemdiv:[],                //右侧除第一页外分页块div滑动个数
                 iteminfo:{
                     id:'aaa',
                     content:'（居民说事）8月1日早，家住西澄河路53号居民陈冬女老人前来社区举报：28号晚7点左右，自己从家中前往公园西门旁边的洗脚的店的路上（广场路）碰到一个穿着时髦40岁左右的女子，跟老人搭讪。实质内容就是宣传法轮功邪教内容，还给老人留下一张字条，内容就是宣传法轮功。老人由于年事已高，又不知道该怎么处置，未第一时间来社区举报，她今天来就想让社区帮忙处理。',
                     sbsj:'2020-08-06',
                     type:'矛盾纠纷',
                     imgitems:[
-                        {title:"处置前图片",src:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2525576107,3579471363&fm=15&gp=0.jpg"},
-                        {title:"处置前图片",src:"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2116973228,1421477263&fm=26&gp=0.jpg"},
-                        {title:"处置后图片",src:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=899052674,2044240737&fm=26&gp=0.jpg"},
+                        // {title:"处置前图片",src:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2525576107,3579471363&fm=15&gp=0.jpg"},
+                        // {title:"处置前图片",src:"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2116973228,1421477263&fm=26&gp=0.jpg"},
+                        // {title:"处置后图片",src:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=899052674,2044240737&fm=26&gp=0.jpg"},
+                    ],
+                    showbigitem:[
+
                     ],
                     activities: [
                         {
@@ -448,16 +474,32 @@
                     wgname:'蔺方英',
                     wgmapurl:'http://10.19.181.153/pubgis/map.jsp?config=screen&amp;loginName=8a93351957cda5740157db93e4ae7617&amp;orgType=134&amp;orgUid=001006023004003&amp;locateCoord=121.54509340478788,29.83097754863277&amp;canEdit',
                     mapiframe:'<iframe id="gisIframe" frameborder="0" scrolling="no"\n' + '                                        src="http://10.19.181.153/pubgis/flex/map.html?wmode=opaque&amp;coordinatex=121.54509340478788&amp;coordinatey=29.83097754863277&amp;config=config-locate.xml"\n' +'                                        width="300px" height="385px"></iframe>'
-                },//事件详情
+                },   //事件详情数据
                 eventimgitems:[
                     {title:"事件描述内容一",src:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2525576107,3579471363&fm=15&gp=0.jpg"},
                     {title:"事件描述内容二",src:"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2116973228,1421477263&fm=26&gp=0.jpg"},
                     {title:"事件描述内容三",src:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=899052674,2044240737&fm=26&gp=0.jpg"},
-                ],  //三类事件top10
-                eventimgitemsfor:[],
-                fullscreenLoading: false, //loading 标记
+                ],       //三类事件top10list
+                eventimgitemsfor:[],       //处理后的三类事件,用于相册滚动每页3条；
+                fullscreenLoading: false,  //loading 标记
                 mySwiper:null,             //相册滑动对象
-                tjdialogname:'统计分析'
+                tjdialogname:'统计分析',
+                Options:{
+                    'inline': true,     //内联
+                    'button': true,
+                    'navbar': true,     //导航栏
+                    'title': true,
+                    'toolbar': true,    //工具栏
+                    'tooltip': true,    //工具提示
+                    'movable': true,    //可移动的
+                    'zoomable': true,   //可缩放
+                    'rotatable': true,  //可旋转
+                    'scalable': true,   //可扩展
+                    'transition': true, //过渡
+                    'fullscreen': true, //全屏
+                    'keyboard': true,   //键盘
+                },             //viewer图片查看器配置
+                bigimgs:[]          //viewer图片查看器图片数组
             }
         },
         async created() {
@@ -475,14 +517,15 @@
             // await this.$store.dispatch('setNum');   // actions使用dispatch进行触发，就像mutation使用commit触发一样
             // console.log('新值---' + this.$store.state.demoValue.num);
             //左侧-中心二类排行
-            await this.bindrc_month();
+            this.bindrc_month();
             this.bindrc_q();
-            this.bindrc_y();
+            await this.bindrc_y();
             //左侧-天翼类别排行
             this.bindlb_m();
             this.bindlb_q();
             this.bindlb_y();
-            this.changeleftCards(1,this.firsttype,'m','EventSmallType');
+            console.log("++++++++++this.firsttype:",this.firsttype);
+            this.changeleftCards(1,this.firsttype,'y','EventSmallType');
         },
         mounted() {
         },
@@ -524,13 +567,48 @@
             },
             //点击左侧排行调用事件筛选接口
             async changeleftCards(e,type,date,tag){
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
+
+
                 let itemplist=[];
                 let that=this;
+                that.itemlist=[];
                 that.itemdiv=[];
-                console.log("+++++++++++++++type:",type);
-                console.log("+++++++++++++++date:",date);
-                console.log("++++++++++++++tag:",tag);
-                console.log("++++++++++++++进入鼠标移上事件");
+                if(e===1)
+                {
+                    //初次加载，设置菜单选中
+                    let leftallcard=document.getElementById("left_reci");
+                    let cards= leftallcard.querySelectorAll(".el-card__body");
+                    cards.forEach(item=>{
+                        item.style.backgroundColor="#2f4553";
+                    });
+                    cards[0].style.backgroundColor="#6a58a0";
+                }
+                else{
+                     //设置菜单选中
+                     let leftallcard=document.getElementById("left_reci");
+                     let cards= leftallcard.querySelectorAll(".el-card__body");
+                     cards.forEach(item=>{
+                         item.style.backgroundColor="#2f4553";
+                     });
+
+
+                     let leftleibieadllcard=document.getElementById("left_leibie");
+                     let leibieadllcard=leftleibieadllcard.querySelectorAll(".el-card__body");
+                    leibieadllcard.forEach(item=>{
+                        item.style.backgroundColor="#2f4553";
+                     });
+
+                    let CardBottom=e.currentTarget.querySelector(".el-card__body");
+                    CardBottom.style.backgroundColor="#6a58a0";
+
+
+                }
                 if (tag === 'EventSmallType') {
                     let {data: event_list, total: counts} = await index.fetchData_get(Api.eventdx.smalltypeevents, {
                         "smalltype": type,
@@ -587,7 +665,7 @@
                                             topimg: datalist[j].处置前图片.split('|')[0],
                                             EventThreeTypeName: datalist[j].EventThreeTypeName,
                                             EventThreeType: datalist[j].EventThreeType,
-                                            EventThreeTypeNameCount: 5,
+                                            EventThreeTypeNameCount: datalist[j].EventCount,
                                             datestr: date,
                                             head:datalist[j].是否头条===1?true:false,
                                             tj:datalist[j].是否推荐===1?true:false
@@ -634,7 +712,7 @@
                                     topimg: datalist[j].处置前图片.split('|')[0],
                                     EventThreeTypeName: datalist[j].EventThreeTypeName,
                                     EventThreeType: datalist[j].EventThreeType,
-                                    EventThreeTypeNameCount: 5,
+                                    EventThreeTypeNameCount: datalist[j].EventCount,
                                     datestr: date,
                                     head:datalist[j].是否头条===1?true:false,
                                     tj:datalist[j].是否推荐===1?true:false
@@ -684,20 +762,35 @@
                 this.flag=this.flag+1;
                 this.itemlist=JSON.parse(JSON.stringify(itemplist));
                 await this.initSwipercards(tag,type,0,date);
+                loading.close();
             },
+            //左侧菜单栏鼠标移上事件
             MoveOnLeftCards(e){
                 e.currentTarget.classList.add('lefton');
             },
+            //左侧菜单栏鼠标移出事件
             MoveOutLeftCards(e){
                 e.currentTarget.classList.remove('lefton');
             },
+            //右侧事件列表块鼠标移上事件
             MoveOnCards(e){
+                // console.log("+++++++++++++++++e:",e);
                 e.currentTarget.classList.add('lefton');
-               // let CardBottom=e.currentTarget.querySelector(".bottom");
-               // CardBottom.classList.add("animated","bounce","duration-2s","faster");
+                let CardBottom=e.currentTarget.querySelector(".el-card__body");
+                CardBottom.style.borderColor="#f9d34c";
+                // CardBottom.style.border="border:solid 1px #f9d34c !important";
+                // CardBottom.classList.add("onyellow");
+                // console.log("+++++++++++++++++CardBottom:",CardBottom);
+                // CardBottom.classList.add("onyellow");
+                // let CardBottom=e.currentTarget.querySelector(".bottom");
+                // CardBottom.classList.add("animated","bounce","duration-2s","faster");
             },
+            //右侧事件列表块鼠标移出事件
             MoveOutCards(e){
                 e.currentTarget.classList.remove('lefton');
+                let CardBottom=e.currentTarget.querySelector(".el-card__body");
+                CardBottom.style.borderColor="#136191";
+                //CardBottom.style.border="border:solid 1px #136191 !important";
                // let CardBottom=e.currentTarget.querySelector(".bottom");
                // CardBottom.classList.remove("animated","bounce","duration-2s","faster");
 
@@ -714,20 +807,21 @@
                             return 'background-color:#4bf67f;color:white;';
                 }
             },
-            async showinfo(id){
-
+            //事件详情-弹出框
+            async showinfo(id,e){
+                //阻止父容器冒泡
+                e.stopPropagation();
                 this.fullscreenLoading=true;
                 this.iteminfo=[];
                 this.showevent=true;
                 await this.bindyq(id);
                 await this.bindeventinfo(id);
-
                 this.fullscreenLoading=false;
-                console.log("xxxxxxxxxxxxxx点击进入事件详情接口");
             },
-            async showthreeinfo(id,date,typename){
-                //console.log()
-                console.log("+++++++++++++typename:",typename);
+            //三类-弹出框
+            async showthreeinfo(id,date,typename,e){
+                //阻止父容器冒泡
+                e.stopPropagation();
                 if(typename==null||id==undefined){
                     this.$message({
                         message: '抱歉，无归属三类，无法分析。',
@@ -746,108 +840,93 @@
             //三类-年月统计
             async bindtbhb(threetype) {
                 console.log("年月++++++++++++++threetype:",threetype);
-
                 //三类-年月统计
                 let {data:threetypemonth} = await index.fetchData_get(Api.eventdx.threetypemonth,{"threetype":threetype});
                 console.log("+++++++++++++++threetypemonth:",threetypemonth);
-
-
-
                 this.$nextTick(() => {
                     //同步环比
                     let echarts = require('echarts');
                     // 基于准备好的dom，初始化echarts实例
                     let myChart = echarts.init(document.getElementById('tbhb_tb'));
                     let colors = ['#ffffff', '#d14a61','#5db75d','#61edfe'];
-                    // let legend_data=[
-                    //     {
-                    //         name: '2020 事件量',
-                    //         // 强制设置图形为圆。
-                    //         icon: 'circle',
-                    //         // 设置文本为红色
-                    //         textStyle: {
-                    //             color: '#fff'
-                    //         }
-                    //     },
-                    //     {
-                    //         name: '2019 事件量',
-                    //         // 强制设置图形为圆。
-                    //         icon: 'circle',
-                    //         // 设置文本为红色
-                    //         textStyle: {
-                    //             color: '#d14a61'
-                    //         }
-                    //     }
-                    // ];
+
                     let legend_data=[];
 
-                    // let xAxis_data1=['2019-1', '2019-2', '2019-3', '2019-4', '2019-5', '2019-6', '2019-7', '2019-8', '2019-9', '2019-10', '2019-11', '2019-12'];
-                    // let xAxis_data2=['2020-1', '2020-2', '2020-3', '2020-4', '2020-5', '2020-6', '2020-7', '2020-8', '2020-9', '2020-10', '2020-11', '2020-12'];
-                    let xAxis_data1=[];
-                    let xAxis_data2=[];
-
-
-                    let xAxis_data=[];
                     let seriesdata=[];
 
                     if(threetypemonth.length>0)
                     {
                         threetypemonth.forEach(item=>{
-                            console.log("++++++++++++++item.data.length:",item.data.length);
                             if(item.data.length>0){
                                 let datas=[];
                                 let datasname=[];
-
-                                legend_data.push({
-                                        name: item.year+' 事件量',
-                                        // 强制设置图形为圆。
-                                        icon: 'circle',
-                                        // 设置文本为红色
-                                        textStyle: {
-                                            color: '#fff'
-                                        }
-                                    }
-                                );
-
-
+                                let noneallforcount=0;
 
                                 item.data.forEach(item1=>{
-                                    datas.push(item1.EventCount);
+                                    if(item1.EventCount==null){
+                                        noneallforcount=noneallforcount+1;
+                                    }
+                                    datas.push(item1.EventCount==null?0:item1.EventCount);
                                     datasname.push(item1.DateStr);
                                 });
 
 
-                                seriesdata.push(
-                                    {
-                                        name: item.year+' 事件量',
-                                        type: 'line',
-                                        xAxisIndex: 1,
-                                        symbol:'triangle',//线条中每个点的样式
-                                        symbolSize:10,     //线条中每个点的大小
-                                        smooth: true,
-                                        data: datas
+                                if(noneallforcount!=12){
+                                    legend_data.push(
+                                        {
+                                            name: item.year+' 事件量',
+                                            // 强制设置图形为圆。
+                                            icon: 'circle',
+                                            // 设置文本为红色
+                                            textStyle: {
+                                                color: '#fff'
+                                            }
+                                        }
+                                    );
+                                    if(datas.length==12){
+                                        seriesdata.push(
+                                            {
+                                                name: item.year+' 事件量',
+                                                type: 'line',
+                                                symbol:'triangle',//线条中每个点的样式
+                                                symbolSize:10,     //线条中每个点的大小
+                                                smooth: true,
+                                                data: datas
+                                            }
+                                        );
                                     }
-                                );
+                                    else{
+                                        let sycount=12-datas.length;
+                                        console.log("++++++++++++时间分布，sycount:",sycount);
+                                        for(let s=0;s<sycount;s++){
+                                            datas.push(null);
+                                        }
+                                        seriesdata.push(
+                                            {
+                                                name: item.year+' 事件量',
+                                                type: 'line',
+                                                symbol:'triangle',//线条中每个点的样式
+                                                symbolSize:10,     //线条中每个点的大小
+                                                smooth: true,
+                                                data: datas
+                                            }
+                                        );
+                                    }
+                                }
+
+
+
+
 
 
                             }
                         });
                     }
 
-                    console.log("+++++++++++++legend_data:",legend_data);
-                    console.log("+++++++++++++seriesdata:",seriesdata);
+                    console.log("+++++++++++++时间分布 legend_data:",legend_data);
+                    console.log("+++++++++++++时间分布 seriesdata:",seriesdata);
 
-                   // let series_data1=[3, 5, 11, 18, 48, 69, 222, 0, 0, 0, 0, 0];
-                   // let series_data2=[2, 5, 9, 26, 28, 70, 175, 182, 48, 18, 6, 2];
-                    // console.log("处理前++++++++++++++++legend_data:",legend_data);
-                    // // map,return产生新对象数组不影响原数组
-                    // legend_data=legend_data.map(item=>{
-                    //     // ...将整个对象引入到新的对象中,直接赋值会改变原有的对象数组值
-                    //     let obj = {...item};
-                    //     obj.name=obj.name;
-                    //     return obj
-                    // });
-                    // console.log("处理后++++++++++++++++legend_data:",legend_data);
+
                     myChart.setOption(
                         {
                             title: {
@@ -892,7 +971,8 @@
                                 },
                             },
                             color:colors,
-                            series: [
+                            series:seriesdata
+                            /*series: [
                                 {
                                     name: '2020 事件量',
                                     type: 'line',
@@ -911,7 +991,7 @@
                                     smooth: true,
                                     data: [8,55,2,1,5,6,10,55,33,12,9,3]
                                 }
-                            ]
+                            ]*/
                         }
                     );
 
@@ -926,17 +1006,93 @@
                 let {data:threetypeqx} = await index.fetchData_get(Api.eventdx.threetypeqx,{"threetype":threetype});
                 let datalist=threetypeqx;
 
+                let timeline=[];
+                let qxdata=[];
+                let optiondata=[];
+                let datafornullcount=0;
+                let colors=['#bda29b','#ca8623','#749f83','#91c7af','#d38265','#61a0a9','#c33531','#f3f3f3','#4277a3','#5bb85d','#f0cdd1','#96d069','#60ecf9','#cb3398','#a05051','#fdff01'];
+                datalist.forEach(item=>{
+                    //timeline.push(item.year);
+
+                    let datas=[];
+
+                    let noneallforcount=0;
+                    if(item.data.length>0){
+                        item.data.forEach(item1=>{
+                            if(item1.EventCount==null){
+                                noneallforcount=noneallforcount+1;
+                            }
+                            datas.push({
+                                name: item1.qxname,
+                                value: item1.EventCount==null?0:item1.EventCount
+                            });
+                        });
+                    }
+                    //如果15个区县值都是null则不画饼图
+                    if(noneallforcount!=15){
+                        //时间轴维度
+                        timeline.push(
+                            {
+                                value: item.year,
+                                tooltip: {          // 让鼠标悬浮到此项时能够显示 `tooltip`。
+                                    formatter: item.year
+                                },
+                                checkpointStyle:{
+                                    color:'#ffffff'
+                                },
+                                controlStyle:{
+                                    color:'#ffffff',
+                                    borderColor:'#ffffff',
+                                },
+                                symbol: 'diamond',  // 此项的图形的特别设置。
+                                symbolSize: 16      // 此项的图形大小的特别设置。
+                            }
+                        );
+                        //数据组
+                        optiondata.push({
+                            title: {
+                                text: item.year+'年区县统计',
+                                textStyle:{
+                                    color:'#ffffff'
+                                }
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: '{a} <br/>{b} : {c}件 ({d}%)'
+                            },
+                            color:colors,
+                            series: [
+                                {
+                                    name: item.year,
+                                    type: 'pie',
+                                    radius: [70, 100],
+                                    center: ['50%', '50%'],
+                                    selectedMode: 'single',
+                                    data: datas
+                                },
+                            ]
+                        });
+                    }
+
+                });
+                if(datalist[0].data.length>0){
+                    datalist[0].data.forEach(item=>{
+                        qxdata.push(item.qxname);
+                    });
+                }
+
+                console.log("+++++++++++区县统计-timeline：",timeline);
+                console.log("+++++++++++区县统计-qxdata：",qxdata);
+                console.log("+++++++++++区县统计-optiondata：",optiondata);
+
+
 
                 this.$nextTick(() => {
                     //同步环比
                     let echarts = require('echarts');
                     // 基于准备好的dom，初始化echarts实例
                     let myChart = echarts.init(document.getElementById('bt_tb'));
-
                     let legenddata=[];
-
-                    let colors=['#bda29b','#ca8623','#749f83','#91c7af','#d38265','#61a0a9','#c33531','#f3f3f3','#4277a3','#5bb85d','#f0cdd1','#96d069','#60ecf9','#cb3398','#a05051','#fdff01'];
-
                     myChart.setOption({
                         baseOption: {
                             timeline: {
@@ -945,7 +1101,7 @@
                                 // realtime: false,
                                 // loop: false,
                                 autoPlay: true,
-                                currentIndex: 1,
+                                currentIndex: 0,
                                 playInterval: 5000,
                                 lineStyle:{
                                     color:'#ffffff'
@@ -962,16 +1118,11 @@
                                 // controlStyle: {
                                 //     position: 'left'
                                 // },
-                                data: ['2019', '2020']
+                                data: timeline
                             },
                             title: {
                                 subtext: ''
                             },
-                            tooltip: {
-                                trigger: 'item',
-                                formatter: '{a} <br/>{b} : {c}件 ({d}%)'
-                            },
-
                             legend: {
                                 type: 'scroll',
                                 left: 140,
@@ -989,12 +1140,13 @@
                                   color:'#ffffff'
                                 },
                                 x: 'right',
-                                data: ['海曙区', '鄞州区', '江北区','奉化区','宁海县','象山县','余姚市'],
+                                data: qxdata,
                             },
                             calculable: true,
-                            data:['2019', '2020']
+                            // data:timeline
                         },
-                        options: [
+                        options:optiondata
+                       /* options: [
                             {
                                 title: {
                                     text: '2019年区县统计',
@@ -1078,7 +1230,7 @@
                                     }
                                 ]
                             },
-                        ]
+                        ]*/
                     });
                     myChart.on('click', function (params) {
                         console.log("+++++++++++++++params.name：",params.name);
@@ -1145,6 +1297,7 @@
             showmenu(){
                 this.showleftmenu=!this.showleftmenu;
             },
+            //获取当前日期
             getNow(){
                 let date = new Date()
                 let month = date.getMonth() + 1
@@ -1196,12 +1349,10 @@
                 }
                 this.nowdate=date.getFullYear() + '-' + month + '-' + day+ ' ' + hh+ ':' + mm+ ':' + ss+' '+weekName
             },
+            //舆情详细-弹出框
             OpenYqInfo(obj){
                 obj.classList.add('fontcolor');
-                console.log("+++++++++++data-id", obj.getAttribute('data-id'));
                 let item_no = this.arr.find((item) => item.id == obj.getAttribute('data-id'));
-                console.log("++++++++++this.arr",this.arr);
-                console.log("++++++++++item_no",item_no);
                 this.$notify.info({
                     title: '舆情-' + item_no.date,
                     dangerouslyUseHTMLString: true,
@@ -1217,13 +1368,8 @@
             async bindrc_month(){
                 let {data:rc_month} = await index.fetchData_get(Api.eventdx.zhongxin_lb_top,{"datestr":'m'});
                 let datalist=rc_month;
-                if(datalist.length>0){
-                    this.firsttype=datalist[0].EventSmallType;
-                }
                 datalist.map(item=>{
                     let obj={...item};
-
-
                     this.hotlist.push({id:obj.sortid,name:obj.EventSmallTypeName,count:obj.EventCount,EventSmallType:obj.EventSmallType});
                 });
             },
@@ -1240,6 +1386,9 @@
             async bindrc_y(){
                 let {data:rc_y} = await index.fetchData_get(Api.eventdx.zhongxin_lb_top,{"datestr":'y'});
                 let datalist=rc_y;
+                if(datalist.length>0){
+                    this.firsttype=datalist[0].EventSmallType;
+                }
                 datalist.map(item=>{
                     let obj={...item};
                     this.nhotlist.push({id:obj.sortid,name:obj.EventSmallTypeName,count:obj.EventCount,EventSmallType:obj.EventSmallType});
@@ -1285,13 +1434,13 @@
                 let czqimg=datalist[0].处置前图片.split('|');
                 for(let j=0;j<czqimg.length;j++){
                         if(czqimg[j]!==''){
-                            this.iteminfo.imgitems.push({title:'处置前图片',src:czqimg[j]});
+                            this.iteminfo.imgitems.push({title:'处置前图片['+(j+1)+']',src:czqimg[j]});
                         }
                 }
                 let czhimg=datalist[0].处置后图片.split('|');
                 for(let j=0;j<czhimg.length;j++){
                     if(czhimg[j]!==''){
-                        this.iteminfo.imgitems.push({title:'处置后图片',src:czhimg[j]});
+                        this.iteminfo.imgitems.push({title:'处置后图片['+(j+1)+']',src:czhimg[j]});
                     }
                 }
                 console.log("++++++++++++++++++id:",datalist[0].id);
@@ -1331,27 +1480,31 @@
                                 }
                             );
                         }
+                        else if((columns[2]+columns[3])=="网格关闭"){
+                            this.iteminfo.activities.push(
+                                {
+                                    content: '【'+columns[2]+columns[3]+'】'+columns[1]+'',
+                                    timestamp: columns[4],
+                                    color: '#172741'
+                                }
+                            );
+                        }
                         else{
                             this.iteminfo.activities.push(
                                 {
                                     content: '【'+columns[2]+columns[3]+'】'+columns[1]+'',
                                     timestamp: columns[4],
+                                    color: '#1fb4cd'
                                 }
                             );
                         }
                     }
                 }
-
                 this.iteminfo.area=datalist[0].地区;
                 this.iteminfo.wg=datalist[0].网格;
                 this.iteminfo.wgname=datalist[0].上报人;
                 this.iteminfo.wgmapurl=datalist[0].轨迹;
-
-
                 this.iteminfo.mapiframe='<iframe id="gisIframe" frameborder="0" scrolling="no" src="http://10.19.181.153/pubgis/flex/map.html?wmode=opaque&amp;coordinatex='+datalist[0].X坐标+'&amp;coordinatey='+datalist[0].Y坐标+'&amp;config=config-locate.xml"  width="300px" height="385px"></iframe>';
-
-
-                //this.iteminfo.
             },
             //舆情接口
             async bindyq(id){
@@ -1367,9 +1520,10 @@
                 this.$refs.paomadeng.bindevents();
             },
             closeDialog(){
-                //清空所有定时器
+                //清空跑马灯所有定时器
                 this.$refs.paomadeng.clearall();
             },
+            //初始化swiper
             async initSwipercards(tag,type,isfirst,date){
                 let that=this;
                 this.$nextTick(()=> {
@@ -1550,6 +1704,7 @@
                                     date:item.date,
                                     wg:item.wg,
                                     src:item.src,
+                                    EventThreeTypeName:item.EventThreeTypeName
                                 });
                             }
                         )
@@ -1558,6 +1713,21 @@
                         });
                     }
                 }
+            },
+            //图片放大
+            showbigimg (idx) {
+                this.iteminfo.showbigitem=[];
+                this.iteminfo.showbigitem=this.iteminfo.imgitems;
+                this.iteminfo.showbigitem.forEach(item=>{
+                   this.bigimgs.push(item.src);
+                });
+                //dom加载完成后执行viewer图片查看器
+                this.$nextTick(()=>{
+                    const viewer= this.$refs.viewer;
+                    viewer.$viewer.show();
+                    viewer.$viewer.index=idx;
+                    console.log("++++++++++viewer",viewer);
+                });
             }
         }
     };
@@ -1578,8 +1748,6 @@
          -moz-transform: rotate(0deg) scale(1.2);
          z-index: 2;
      }
-
-
      .el-tag{
          margin-right: 10px;
      }
@@ -1590,7 +1758,7 @@
        opacity: 0.9;
      }*/
      .el-card{
-         margin: 6px;
+         margin: 9px;
          border:none !important;
          background-color: inherit !important;
          float:left;
@@ -1629,12 +1797,16 @@
      .el-timeline-item{
          padding-bottom: 10px !important;
      }
+     .viewer-title{
+         font-size:26px !important;
+     }
  </style>
  <!--classname被替换，使用范围vue当前页-->
  <style lang="scss" scoped>
      .fontcolor{
          color:red;
          font-weight: bolder;
+
      }
 
 
@@ -1737,7 +1909,7 @@
          float: left;
          width: 300px;
          height: 375px;
-         background-color: #dfdfdf;
+         background-color: #DFDFDF;
          margin-left: 9px;
          border-radius: 5px;
          border: solid 1px #DFDFDF;
@@ -1756,7 +1928,7 @@
          border: solid 1px #DFDFDF;
          border-radius: 5px;
          padding: 10px;
-         background-color: #f3f3f3;
+         background-color: #DFDFDF;
          box-shadow: 0px 1px 3px 3px gray;
      }
 
@@ -1766,7 +1938,7 @@
          float: left;
          width: 465px;
          height: 355px;
-         background-color: #f3f3f3;
+         background-color: #DFDFDF;
          box-shadow: 0px 1px 3px 3px gray;
          border: solid 1px #f3f3f3;
          border-radius: 5px;
@@ -1821,11 +1993,13 @@
      }
 
      .el-carousel__item:nth-child(2n) {
-         background-color: #61a0a9;
+         background-color: #dfdfdf;
+
      }
 
      .el-carousel__item:nth-child(2n+1) {
-         background-color: #61a0a9;
+         background-color: #dfdfdf;
+
      }
 
 
@@ -1932,7 +2106,7 @@
      .hot_icon_content {
          float: left;
          display: inline-block;
-         width: 158px;
+         width: 145px;
          line-height: 30px;
          background-color: gray;
          color: white;
@@ -1951,7 +2125,12 @@
 
      .lefton {
          background-color: #3c6a7e !important;
+         border:none;
+
          opacity: 0.8;
+     }
+     .onyellow{
+         border:solid 1px #f9d34c !important;
      }
 
      .leftclickon {
@@ -1997,7 +2176,7 @@
      }
 
      .swiper-container {
-         width: 1500px;
+         width: 1520px;
          height: 1000px;
 
      }
@@ -2153,9 +2332,9 @@
 
      .hotWords {
          float: left;
-         width: 300px;
+         width: 288px;
          height: 970px;
-         margin-left: 0px;
+         margin-left: 10px;
          margin-top: 28px;
          background-color: #0c1a34;
          border-radius: 5px;
@@ -2164,9 +2343,9 @@
 
      .container {
          float: left;
-         margin-left: 55px;
+         margin-left: 35px;
          margin-top: 10px;
-         width: 1500px;
+         width: 1520px;
          height: 990px;
 
 

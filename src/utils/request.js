@@ -7,7 +7,7 @@ const service = axios.create({
     // easy-mock服务挂了，暂时不使用了
     // baseURL: process.env.VUE_APP_BASE_URL,
     //baseURL:"http://124.202.145.102:8097/wastesort/",
-    timeout: 10000
+    timeout: 0
 });
 
 // 添加请求拦截器
